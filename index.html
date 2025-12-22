@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tanmay Anand | Portfolio</title>
     <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.4);
+            --scrollbar-thumb: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -23,6 +24,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -32,13 +34,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
+            overscroll-behavior-y: auto;
         }
 
         /* Animated Background Blobs */
         .blob {
-            position: absolute;
+            position: fixed;
             border-radius: 50%;
             filter: blur(120px);
             z-index: 0;
@@ -47,20 +51,20 @@
         }
 
         .blob-1 {
-            width: 50vw;
-            height: 50vw;
+            width: 80vw;
+            height: 80vw;
             background: #4f46e5;
             top: -10%;
-            left: -5%;
+            left: -20%;
             animation: move-1 25s infinite linear;
         }
 
         .blob-2 {
-            width: 40vw;
-            height: 40vw;
+            width: 70vw;
+            height: 70vw;
             background: #e261d1;
             bottom: -10%;
-            right: -5%;
+            right: -20%;
             animation: move-2 20s infinite linear;
         }
 
@@ -80,31 +84,35 @@
             z-index: 10;
             width: 100%;
             max-width: 440px;
-            margin: 0 16px;
+            margin: 20px 16px;
             background: var(--glass-bg);
             backdrop-filter: blur(45px);
             -webkit-backdrop-filter: blur(45px);
             border: 1px solid var(--glass-border);
-            border-radius: 40px;
+            border-radius: 32px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
             animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(60px) scale(0.98); }
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Traffic Lights */
         .controls {
             display: flex;
             gap: 6px;
-            padding: 24px 24px 8px;
+            padding: 20px 24px 8px;
+            flex-shrink: 0;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
         }
 
@@ -112,16 +120,31 @@
         .dot-yellow { background: #febc2e; opacity: 0.8; }
         .dot-green { background: #28c840; opacity: 0.8; }
 
-        /* Profile Section */
         .content {
-            padding: 0 32px 48px;
+            padding: 0 24px 32px;
             text-align: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+            margin: 10px 0;
+        }
+        .content::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 10px;
         }
 
         .avatar-container {
-            width: 96px;
-            height: 96px;
-            margin: 0 auto 24px;
+            width: 88px;
+            height: 88px;
+            margin: 8px auto 20px;
             padding: 2px;
             background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
             border-radius: 50%;
@@ -140,34 +163,32 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.5) translate(5px, 15px);
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .tag {
-            font-size: 10px;
+            font-size: 9px;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .desc {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 32px;
+            line-height: 1.5;
+            margin-bottom: 24px;
         }
 
-        /* Social Icons */
         .social-dock {
             display: inline-flex;
             gap: 8px;
@@ -175,12 +196,12 @@
             padding: 6px;
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .social-btn {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -190,40 +211,45 @@
             transition: all 0.2s;
         }
 
-        .social-btn:hover {
+        .social-btn:active {
             background: rgba(255, 255, 255, 0.12);
             color: #fff;
-            transform: scale(1.05);
+            transform: scale(0.95);
         }
 
-        /* Link Buttons */
         .links-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
+            padding-bottom: 10px;
         }
 
         .link-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 24px;
+            padding: 14px 20px;
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            border-radius: 18px;
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.2s;
         }
 
-        .link-item:hover {
+        .link-item:active {
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.1);
             color: #fff;
-            transform: translateX(4px);
+            transform: scale(0.98);
+        }
+
+        @media (hover: hover) {
+            .social-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; transform: scale(1.05); }
+            .link-item:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.1); color: #fff; transform: translateX(4px); }
         }
 
         .link-item i {
@@ -231,21 +257,21 @@
             transition: opacity 0.2s;
         }
 
-        .link-item:hover i {
+        .link-item:active i {
             opacity: 0.6;
         }
 
-        /* Footer */
         .footer {
-            position: absolute;
-            bottom: 32px;
+            position: fixed;
+            bottom: 20px;
             width: 100%;
             text-align: center;
             color: var(--text-muted);
-            font-size: 10px;
+            font-size: 9px;
             text-transform: lowercase;
             letter-spacing: 0.05em;
             pointer-events: none;
+            z-index: 1;
         }
     </style>
 </head>
@@ -264,7 +290,7 @@
         <div class="content">
             <div class="avatar-container">
                 <div class="avatar">
-                    <!-- 🖼️ PROFILE IMAGE URL -->
+                    <!-- Restored original local path -->
                     <img src="./images/pfp.png" alt="Tanmay">
                 </div>
             </div>
@@ -274,18 +300,15 @@
             <p class="desc">Here are some of the works<br>that show what I can do!</p>
 
             <div class="social-dock">
-                <!-- 🔗 INSTAGRAM -->
                 <a href="https://www.instagram.com/whenthemoonglows/" target="_blank" class="social-btn">
                     <i data-lucide="instagram"></i>
                 </a>
-                <!-- 🔗 YOUTUBE -->
                 <a href="https://www.youtube.com/@whenthemoonglows" target="_blank" class="social-btn">
                     <i data-lucide="youtube"></i>
                 </a>
             </div>
 
             <div class="links-list">
-                <!-- 🔗 PROJECT LINKS -->
                 <a href="https://www.instagram.com/p/DPO4bbREqDs/" target="_blank" class="link-item">
                     <span>Work #1</span>
                     <i data-lucide="chevron-right"></i>
@@ -311,7 +334,6 @@
     </div>
 
     <script>
-        // Initialize icons
         lucide.createIcons();
     </script>
 </body>
