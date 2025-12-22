@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanmay Anand | Portfolio</title>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons via CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --bg-color: #0d0d12;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .blob-1 {
+            width: 50vw;
+            height: 50vw;
+            background: #4f46e5;
+            top: -10%;
+            left: -5%;
+            animation: move-1 25s infinite linear;
+        }
+
+        .blob-2 {
+            width: 40vw;
+            height: 40vw;
+            background: #e261d1;
+            bottom: -10%;
+            right: -5%;
+            animation: move-2 20s infinite linear;
+        }
+
+        @keyframes move-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+        }
+
+        @keyframes move-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 40px) scale(1.15); }
+        }
+
+        /* Window Styling */
+        .window {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 440px;
+            margin: 0 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(45px);
+            -webkit-backdrop-filter: blur(45px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(60px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Traffic Lights */
+        .controls {
+            display: flex;
+            gap: 6px;
+            padding: 24px 24px 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; opacity: 0.8; }
+        .dot-yellow { background: #febc2e; opacity: 0.8; }
+        .dot-green { background: #28c840; opacity: 0.8; }
+
+        /* Profile Section */
+        .content {
+            padding: 0 32px 48px;
+            text-align: center;
+        }
+
+        .avatar-container {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 24px;
+            padding: 2px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+            border-radius: 50%;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        /* Social Icons */
+        .social-dock {
+            display: inline-flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Link Buttons */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        .link-item i {
+            opacity: 0.2;
+            transition: opacity 0.2s;
+        }
+
+        .link-item:hover i {
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 32px;
+            width: 100%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 10px;
+            text-transform: lowercase;
+            letter-spacing: 0.05em;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="window">
+        <div class="controls">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+        </div>
+
+        <div class="content">
+            <div class="avatar-container">
+                <div class="avatar">
+                    <!-- 🖼️ PROFILE IMAGE URL -->
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tanmay&backgroundColor=transparent" alt="Tanmay">
+                </div>
+            </div>
+
+            <h1>Tanmay Anand</h1>
+            <span class="tag">Premiere / AE Editor</span>
+            <p class="desc">Here are some of the works<br>that show what I can do!</p>
+
+            <div class="social-dock">
+                <!-- 🔗 INSTAGRAM -->
+                <a href="https://instagram.com" target="_blank" class="social-btn">
+                    <i data-lucide="instagram"></i>
+                </a>
+                <!-- 🔗 YOUTUBE -->
+                <a href="https://instagram.com" target="_blank" class="social-btn">
+                    <i data-lucide="youtube"></i>
+                </a>
+            </div>
+
+            <div class="links-list">
+                <!-- 🔗 PROJECT LINKS -->
+                <a href="https://instagram.com" target="_blank" class="link-item">
+                    <span>Work #1</span>
+                    <i data-lucide="chevron-right"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="link-item">
+                    <span>Work #2</span>
+                    <i data-lucide="chevron-right"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="link-item">
+                    <span>Work #3</span>
+                    <i data-lucide="chevron-right"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="link-item">
+                    <span>Personal favourite :)</span>
+                    <i data-lucide="chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        by tanmay ❤️
+    </div>
+
+    <script>
+        // Initialize icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
