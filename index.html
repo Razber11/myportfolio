@@ -16,7 +16,6 @@
             --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.4);
-            /* Refined scrollbar variables */
             --scrollbar-thumb: rgba(255, 255, 255, 0.08);
             --scrollbar-thumb-hover: rgba(255, 255, 255, 0.15);
         }
@@ -105,31 +104,13 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .controls {
-            display: flex;
-            gap: 6px;
-            padding: 20px 24px 8px;
-            flex-shrink: 0;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .dot-red { background: #ff5f57; opacity: 0.8; }
-        .dot-yellow { background: #febc2e; opacity: 0.8; }
-        .dot-green { background: #28c840; opacity: 0.8; }
-
         .content {
-            padding: 0 24px 32px;
+            padding: 32px 24px; /* Added top padding since controls are removed */
             text-align: center;
             overflow-y: auto;
             overflow-x: hidden;
             flex: 1;
             -webkit-overflow-scrolling: touch;
-            /* Firefox Scrollbar */
             scrollbar-width: thin;
             scrollbar-color: var(--scrollbar-thumb) transparent;
         }
@@ -140,7 +121,6 @@
         }
         .content::-webkit-scrollbar-track {
             background: transparent;
-            /* Margin keeps the scrollbar away from the curved top/bottom edges */
             margin-top: 24px;
             margin-bottom: 24px;
         }
@@ -292,16 +272,10 @@
     <div class="blob blob-2"></div>
 
     <div class="window">
-        <div class="controls">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-        </div>
-
+        <!-- macOS controls removed as requested -->
         <div class="content">
             <div class="avatar-container">
                 <div class="avatar">
-                    <!-- Local image path preserved as requested -->
                     <img src="./images/pfp.png" alt="Tanmay">
                 </div>
             </div>
