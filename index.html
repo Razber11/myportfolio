@@ -45,7 +45,7 @@
         .blob {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(100px);
             z-index: 0;
             pointer-events: none;
             opacity: 0.15;
@@ -57,8 +57,9 @@
             background: #4f46e5;
             top: -10%;
             left: -20%;
-            animation: move-1 25s infinite linear;
+            animation: scale-1 5s cubic-bezier(0.075, 0.82, 0.165, 1), move-1 25s infinite linear;
         }
+
 
         .blob-2 {
             width: 70vw;
@@ -66,17 +67,22 @@
             background: #e261d1;
             bottom: -10%;
             right: -20%;
-            animation: move-2 20s infinite linear;
+            animation: scale-1 2s cubic-bezier(0.075, 0.82, 0.165, 1),  move-2 25s infinite linear;
+        }
+
+        @keyframes scale-1{
+            0% { transform: scale(0) translateX(400px);}
+            100%{ transform: scale(1) translateX(0);}
         }
 
         @keyframes move-1 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -20px) scale(1.1); }
+            50% { transform: translate(100px, -20px) scale(1.1); }
         }
 
         @keyframes move-2 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-20px, 40px) scale(1.15); }
+            50% { transform: translate(-200px, 40px) scale(1.15); }
         }
 
         /* Window Styling */
@@ -115,7 +121,7 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            from { opacity: 0; transform: translateY(40px) scale(0.8); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
@@ -279,13 +285,13 @@
         }
 
         @media (hover: hover) {
-            .social-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; transform: scale(1.05); }
-            .link-item:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.1); color: #fff; transform: translateX(4px); }
+            .social-btn:hover { background: rgba(255, 255, 255, 0.12); color: #fff; transform: scale(1.2) translate(0px,-0px); }
+            .link-item:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.1); color: #fff; transform: scale(1.03) translate(7px); }
         }
 
         .link-item i {
             opacity: 0.2;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
         }
 
         .link-item:active i {
