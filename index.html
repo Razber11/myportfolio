@@ -172,6 +172,22 @@
             object-fit: cover;
 
             transform: scale(1.5) translate(3px, 15px);        
+
+            transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .avatar img:hover{
+            transform: scale(1.9) translate(3px, 18px);    
+            filter:contrast(200%);
+
+            transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        .avatar img:active{
+            transform: scale(1.9) translate(3px, 18px);    
+            filter:contrast(200%);
+
+            transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
 
         h1 {
@@ -179,6 +195,12 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 4px;
+            
+            transition: all 500ms cubic-bezier(.3,.64,.89,.39);
+        }
+
+        h1:active{
+            
         }
 
         .tag {
